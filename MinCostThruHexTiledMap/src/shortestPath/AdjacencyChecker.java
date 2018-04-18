@@ -19,8 +19,8 @@ class AdjacencyChecker {
 	public AdjacencyChecker() {
 		Populator validEntries = new Populator();
 		List<Integer> pNumList = validEntries.getPositionNumberList();
-		List<Integer> cList = validEntries.getCostList();
-		List<Double> eWeightList = validEntries.getEdgeWeightList();
+		//List<Integer> cList = validEntries.getCostList();
+		//List<Double> eWeightList = validEntries.getEdgeWeightList();
 		adjacencyList = new HashMap<Integer,List<Integer>>();
 		
 		for(int i=0;i<pNumList.size();i++) {
