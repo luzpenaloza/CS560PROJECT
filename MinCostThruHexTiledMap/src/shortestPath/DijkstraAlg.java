@@ -42,19 +42,48 @@ class DijkstraAlg {
 		currentVertex = start;
 		int aCheckCount = 0;
 		while (!inTree[currentVertex]) {
+			/*
+			 * 21 while ( !intree[v] ) 22 { 23 intree[v] = TRUE ; //21 While the
+			 * current vertex is not in the tree, //23 place the current vertex
+			 * in the tree
+			 */
 			inTree[currentVertex] = Boolean.TRUE;
-			// 24 p = g-> edges[v] ;
-			// 25 while ( p != NULL )
-			// 26 {
-			// 27 w = p->y ;
-			// 28 weight = p->weight ;
+			/*
+			 * 24 p = g-> edges[v] ; 25 while ( p != NULL ) 26 { 27 w = p->y ;
+			 * 28 weight = p->weight ; //24 get the adjacency list for the
+			 * current vertex. //25 while there are unvisited adjacent
+			 * neighbors, //27 Visit the next unvisited neighbor and get its
+			 * vertex //28 Set weight equal to the edge weight of the currently
+			 * visited adjacent neighbor //29-33 relax() //34 Go to the next
+			 * unvisited neighbor (may be redundant.)
+			 */
+
+			/*
+			 * 36 v = 1 ; 37 dist = MAXINT ; 38 for ( i = 1 ; i <= g->nvertices
+			 * ; i++ ) 39 if ( !intree[i] && (dist > distance[i]) ) 40 { 41 dist
+			 * = distance[i] ; 42 v = i ; 43 } 44 } //36 Set the current vertex
+			 * equal to 1
+			 * 
+			 * //37 Set the current shortest distance equal to MAXINT
+			 * 
+			 * //38 For index i from 1 to the number of vertices in the graph
+			 * 
+			 * //39 If the value located in the intree array at the position of
+			 * index i is FALSE AND the current distance is greater than the
+			 * value of the distance array located in the position of index i
+			 * 
+			 * //41 Then set the current distance equal to value of the distance
+			 * array located in the position of
+			 * 
+			 * //42 Also, set the value of the current vertex equal to index i.
+			 */
 
 			aCheck.getAdjacencyList()
 					.forEach((k, v) -> System.out.println("Position Number: " + k + " Adjacent Vertices: " + v));
-			 System.out.println(aCheck.getAdjacencyList().values());
-			//System.out.println(			aCheck.getAdjacencyList().get(i));
+			System.out.println(aCheck.getAdjacencyList().values());
+			// System.out.println( aCheck.getAdjacencyList().get(i));
 
-			 for (int i = 1; i < aCheck.getAdjacencyList().values().size(); i++) {
+			for (int i = 1; i < aCheck.getAdjacencyList().values().size(); i++) {
 				System.out.println("A check: " + aCheckCount++ + " " + aCheck.getAdjacencyList().get(i));
 			}
 			System.out.println(aCheck.getAdjacencyList().values().size());
@@ -70,16 +99,28 @@ class DijkstraAlg {
 	}
 
 	void relax() {
-		// 39 if ( !intree[i] && (dist > distance[i]) )
-		// 40 {
-		// 41 dist = distance[i] ;
-		// 42 v = i ;
-		// 43 }
-		// 44 }
-		// 45 }
+		/*
+		 * 29 >>> if ( distance[w] > (distance[v] + weight) ) 30 { 31 >>>
+		 * distance[w] = distance[v] + weight ; 32 parent[w] = v ; 33 }
+		 * 
+		 * 
+		 * // 29 If the value of the distance array located in the position of
+		 * the vertex of the currently visited adjacent neighbor is greater than
+		 * the sum of the value of the distance array located in the position of
+		 * the current vertex and weight,
+		 * 
+		 * //31 then set value of the distance array located in the position of
+		 * the vertex of the currently visited adjacent neighbor equal the sum
+		 * of the value of the distance array located in the position of the
+		 * current vertex and weight.
+		 * 
+		 * // 32 Also, place the current vertex in the location of the parent
+		 * array which corresponds to the vertex of the currently visited
+		 * adjacent neighbor.
+		 */
 	}
 
-	void findMax() {
+	void findMin() {
 		Map.Entry<Integer, List<Integer>> maxEntry = null;
 		for (int i = 0; i < aCheck.getAdjacencyList().values().size(); i++) {
 			aCheck.getAdjacencyList().get(i);
