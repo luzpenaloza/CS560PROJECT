@@ -45,14 +45,15 @@ class DijkstraAlg {
 		int aCheckCount = 0;
 		// int[] aCheckPrim = ((Collection<Integer>)
 		// aCheck.getAdjacencyList()).stream().mapToInt(Integer::intValue).toArray();
-		for (int i = 0; i < 233; i++) {
+		//for (int i = 0; i < 233; i++) {
 			// System.out.println(aCheck.getAdjacencyList().get(i));
-			if (aCheck.getAdjacencyList().get(i) != null) {
+			//if (aCheck.getAdjacencyList().get(i) != null) {
 				// System.out.println(aCheck.getAdjacencyList().get(i));
 
 				// }
 				// System.out.println(aCheck.getAdjacencyList().containsKey(validEntries));
-			}
+			//}
+			
 			// int j = 0;
 			// System.out.println(pNumList.indexOf(currentVertex));
 
@@ -116,7 +117,7 @@ class DijkstraAlg {
 				aCheck.getAdjacencyList()
 						.forEach((k, v) -> System.out.println("Position Number: " + k + " Adjacent Vertices: " + v));
 				System.out.println(aCheck.getAdjacencyList().values());
-				System.out.println(aCheck.getAdjacencyList().get(i));
+		//		System.out.println(aCheck.getAdjacencyList().get(i));
 
 				// for (int k = 1; k <
 				// aCheck.getAdjacencyList().values().size(); k++) {
@@ -127,7 +128,7 @@ class DijkstraAlg {
 			}
 
 		}
-	}
+	//}
 
 	void initialize() {
 		Arrays.fill(inTree, Boolean.FALSE);
