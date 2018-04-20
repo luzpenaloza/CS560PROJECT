@@ -15,6 +15,7 @@ import java.util.Map;
  */
 class DijkstraAlg {
 	int currentVertex;
+	int currentAdjNeighbor;
 	int w;
 	int MAXV = 233;
 	int start = 226;
@@ -22,7 +23,7 @@ class DijkstraAlg {
 	double currentWeight;
 	int dist;
 	Boolean[] inTree;
-	Integer[] distance;
+	Double[] distance;
 	Integer[] parent;
 	AdjacencyChecker aCheck;
 
@@ -33,12 +34,12 @@ class DijkstraAlg {
 		Populator validEntries = new Populator();
 		List<Integer> pNumList = validEntries.getPositionNumberList();
 		int pNumIndex = 0;
-		List<Integer> cList = validEntries.getCostList();
+		List<Double> cList = validEntries.getCostList();
 		List<Double> eWeightList = validEntries.getEdgeWeightList();
 		aCheck = new AdjacencyChecker();
 		// MAXV = pNumList.size();
 		inTree = new Boolean[MAXV + 1];
-		distance = new Integer[MAXV + 1];
+		distance = new Double[MAXV + 1];
 		parent = new Integer[MAXV + 1];
 		initialize();
 		currentVertex = start;
@@ -84,7 +85,8 @@ class DijkstraAlg {
 
 				// while (aCheck.getAdjacencyList().get(j) != null) {
 				for (int j = 0; j < aCheck.getAdjacencyList().get(currentVertex).size(); j++) {
-					if (aCheck.getAdjacencyList().get(currentVertex).get(j) != null) {
+					currentAdjNeighbor = aCheck.getAdjacencyList().get(currentVertex).get(j);
+					if(currentAdjNeighbor != 0){
 						// System.out.println(aCheck.getAdjacencyList().get(currentVertex).get(j));
 						currentWeight = eWeightList.get(pNumIndex);
 						//System.out.println(currentWeight);
@@ -134,15 +136,19 @@ class DijkstraAlg {
 		Arrays.fill(inTree, Boolean.FALSE);
 		Arrays.fill(distance, MAXINT);
 		Arrays.fill(parent, -1);
-		distance[start] = 0;
+		distance[start] = (double) 0;
 	}
 
 	void relax() {
-		/*
-		 * 29 >>> if ( distance[w] > (distance[v] + weight) ) 30 { 31 >>>
-		 * distance[w] = distance[v] + weight ; 32 parent[w] = v ; 33 }
-		 * 
-		 * 
+		
+		  if ( distance[currentAdjNeighbor] > (distance[currentVertex] + currentWeight) ) 
+		   		{ 
+		   				//take smaller distance
+		 		distance[currentAdjNeighbor] =  (distance[currentVertex] + currentWeight) ; 
+					parent[currentAdjNeighbor] = currentVertex ; 
+				}
+		
+		 /*
 		 * // 29 If the value of the distance array located in the position of
 		 * the vertex of the currently visited adjacent neighbor is greater than
 		 * the sum of the value of the distance array located in the position of

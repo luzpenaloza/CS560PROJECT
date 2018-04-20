@@ -25,7 +25,7 @@ class Populator {
 
 	String[] token;
 	ArrayList<Integer> positionNumberList = new ArrayList<Integer>();
-	ArrayList<Integer> costList = new ArrayList<Integer>();
+	List<Double> costList = new ArrayList<Double>();
 	ArrayList<Double> edgeWeightList = new ArrayList<Double>();
 
 	/**
@@ -74,7 +74,7 @@ class Populator {
 		return positionNumberList;
 	}
 
-	public List<Integer> getCostList() {
+	public List<Double> getCostList() {
 		return costList;
 	}
 
@@ -83,9 +83,9 @@ class Populator {
 	}
 
 	void lister() {
-		if (Integer.parseInt(token[1]) != -1) {
+		if (Integer.parseInt(token[1]) > 0) {
 			positionNumberList.add(Integer.parseInt(token[0]));
-			costList.add(Integer.parseInt(token[1]));
+			costList.add(Double.parseDouble(token[1]));
 			edgeWeightList.add(Double.parseDouble(token[1]) / 2);
 		}
 
