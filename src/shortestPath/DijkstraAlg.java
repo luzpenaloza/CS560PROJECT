@@ -21,7 +21,7 @@ class DijkstraAlg {
 	int start = 226;
 	int MAXINT = 9999;
 	double currentWeight;
-	int dist;
+	double dist;
 	Boolean[] inTree;
 	Double[] distance;
 	Integer[] parent;
@@ -81,17 +81,38 @@ class DijkstraAlg {
 				 * to the next unvisited neighbor (may be redundant.)
 				 */
 				// int j = 0;
+				int size=0;
 				pNumIndex = pNumList.indexOf(currentVertex);
-
+				try{
+					List<Integer> value=aCheck.getAdjacencyList().get(currentVertex);
+					if(value != null){
+					size = value.size();
+					}
+				}
+				finally{
+					
+				}
+				if(size != 0){
 				// while (aCheck.getAdjacencyList().get(j) != null) {
-				for (int j = 0; j < aCheck.getAdjacencyList().get(currentVertex).size(); j++) {
+				for (int j = 0; j < size; j++) {
 					currentAdjNeighbor = aCheck.getAdjacencyList().get(currentVertex).get(j);
 					if(currentAdjNeighbor != 0){
 						// System.out.println(aCheck.getAdjacencyList().get(currentVertex).get(j));
 						currentWeight = eWeightList.get(pNumIndex);
 						//System.out.println(currentWeight);
 						relax();
+						
 					}
+					//line36 
+					currentVertex = 1;
+					dist = MAXINT;
+					for( int i = 1; i <= MAXV; i++)
+						if(!inTree[i] && (dist > distance [i]))
+						{
+							dist = distance[i];
+							currentVertex = i;
+						}
+				}
 				}
 				/*
 				 * 36 v = 1 ; 37 dist = MAXINT ; 38 for ( i = 1 ; i <=
@@ -134,7 +155,7 @@ class DijkstraAlg {
 
 	void initialize() {
 		Arrays.fill(inTree, Boolean.FALSE);
-		Arrays.fill(distance, MAXINT);
+		Arrays.fill(distance, 233.00);
 		Arrays.fill(parent, -1);
 		distance[start] = (double) 0;
 	}

@@ -18,7 +18,7 @@ class GraphAdjHasher {
 	public GraphAdjHasher() {
 		Populator validEntries = new Populator();
 		List<Integer> pNumList = validEntries.getPositionNumberList();
-		List<Integer> cList = validEntries.getCostList();
+		List<Double> cList = validEntries.getCostList();
 		List<Double> eWeightList = validEntries.getEdgeWeightList();
 		AdjacencyChecker aCheck = new AdjacencyChecker();
 		HashMap<Integer,List<Integer>> aList = aCheck.getAdjacencyList(); 
